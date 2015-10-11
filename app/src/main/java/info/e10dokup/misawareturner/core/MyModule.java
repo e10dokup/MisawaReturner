@@ -3,6 +3,14 @@ package info.e10dokup.misawareturner.core;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.squareup.okhttp.Request;
+
+import java.sql.ResultSet;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,4 +28,8 @@ public class MyModule {
         mContext = context;
     }
 
+    @Provides
+    public RequestQueue provideRequestQueue() {
+        return Volley.newRequestQueue(mContext);
+    }
 }
