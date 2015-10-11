@@ -14,6 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -21,9 +26,12 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import info.e10dokup.misawareturner.MainActivity;
 import info.e10dokup.misawareturner.R;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
+import info.e10dokup.misawareturner.data.AnalyzeData;
+import info.e10dokup.misawareturner.helper.ConnectionHelper;
 
 /**
  * Created by e10dokup on 2015/10/10
@@ -33,7 +41,7 @@ public class MainFragment extends BaseFragment {
     private final MainFragment self = this;
 
     @Inject
-    RequestQueue mRequestQueue;
+    ConnectionHelper mConnectionHelper;
 
     @Bind(R.id.btn_voice)
     ImageButton mRecognitionButton;
@@ -41,6 +49,7 @@ public class MainFragment extends BaseFragment {
     RelativeLayout mLayout;
 
     private SpeechRecognizer mSpeechRecognizer;
+    private String mWord;
 
     @Nullable
     @Override
@@ -110,7 +119,9 @@ public class MainFragment extends BaseFragment {
                     .getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if(recData.size() > 0) {
                 // 認識結果候補で一番有力なものを表示
-                Snackbar.make(mLayout, recData.get(0), Snackbar.LENGTH_SHORT).show();
+                mWord = recData.get(0);
+                Snackbar.make(mLayout, mWord, Snackbar.LENGTH_SHORT).show();
+                mConnectionHelper.wordAnalyzeConnection(mWord, mSuccessListener);
             }
         }
 
@@ -121,6 +132,20 @@ public class MainFragment extends BaseFragment {
 
         @Override
         public void onEvent(int eventType, Bundle params) {
+        }
+    };
+
+    Response.Listener<JSONObject> mSuccessListener = new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+            try {
+                JSONObject result = response.getJSONArray("results").getJSONObject(0);
+                int spn = result.getInt("spn");
+                ((MainActivity) getBaseActivity()).setAnalizeData(new AnalyzeData(mWord, spn));
+                getBaseActivity().replaceFragment(new ConversationFragment(), false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     };
 

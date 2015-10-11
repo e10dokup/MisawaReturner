@@ -13,6 +13,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import info.e10dokup.misawareturner.helper.ConnectionHelper;
 
 /**
  * Created by e10dokup on 2015/10/09
@@ -32,4 +33,10 @@ public class MyModule {
     public RequestQueue provideRequestQueue() {
         return Volley.newRequestQueue(mContext);
     }
+
+    @Provides
+    public ConnectionHelper provideConnectionHelper() {
+        return new ConnectionHelper(mContext);
+    }
+
 }

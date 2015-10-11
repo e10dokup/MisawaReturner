@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import info.e10dokup.misawareturner.core.BaseActivity;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
+import info.e10dokup.misawareturner.data.AnalyzeData;
 import info.e10dokup.misawareturner.fragment.MainFragment;
 
 /**
@@ -27,6 +28,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     NavigationView mNavigationView;
     @Bind(R.id.layout_drawer)
     DrawerLayout mDrawerLayout;
+
+    private AnalyzeData sAnalyzeData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,5 +124,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public void closeDrawer() {
         mDrawerLayout.closeDrawers();
+    }
+
+    public void setAnalizeData(AnalyzeData analyzeData) {
+        sAnalyzeData = analyzeData;
+    }
+
+    public AnalyzeData getAnalyzeData() {
+        return sAnalyzeData;
     }
 }
