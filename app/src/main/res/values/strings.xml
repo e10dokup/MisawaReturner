@@ -3,4 +3,7 @@
 
     <string name="text_start">下のマイクボタンをクリックして\n話してみてください</string>
     <string name="iminos_api_url">https://lr.capio.jp/webapis/iminos/synana_k/1_1/?acckey=3BECMZ4r8V7Sjcgm&amp;keyname=sensibilitie&amp;sent=</string>
+
+    <string name="kintone_api_url">https://t9xw8.cybozu.com/k/v1/records.json?app=14</string>
+    <string name="kintone_api_key">tCSEWuf0oju2oq9T6GxXwWIKFLan3Q4PGii35uWZ</string>
 </resources>

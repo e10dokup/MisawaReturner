@@ -83,6 +83,12 @@ public class MainFragment extends BaseFragment {
         }
     };
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     RecognitionListener mRecognitionListener = new RecognitionListener() {
         @Override
         public void onReadyForSpeech(Bundle params) {
@@ -148,6 +154,8 @@ public class MainFragment extends BaseFragment {
             }
         }
     };
+
+
 
 
 

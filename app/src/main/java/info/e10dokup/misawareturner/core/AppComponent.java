@@ -4,6 +4,7 @@ import com.android.volley.RequestQueue;
 
 import dagger.Component;
 import info.e10dokup.misawareturner.MainActivity;
+import info.e10dokup.misawareturner.fragment.ConversationFragment;
 import info.e10dokup.misawareturner.fragment.MainFragment;
 
 @Component(
@@ -13,4 +14,6 @@ public interface AppComponent {
     void inject(MainActivity mainActivity);
 
     void inject(MainFragment mainFragment);
+
+    void inject(ConversationFragment conversationFragment);
 }
