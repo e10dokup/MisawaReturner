@@ -3,7 +3,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 def VERSION_CODE = 1
 def VERSION_NAME = "1.0.0"
-def PACKAGE_NAME = "info.e10dokup.example"
+def PACKAGE_NAME = "info.e10dokup.misawareturner"
 def MIN_SDK_VERSION = 18
 def TARGET_SDK_VERSION = 22
 
@@ -88,8 +88,9 @@ dependencies {
     compile "com.jakewharton:butterknife:7.0.1"
     apt "com.jakewharton:butterknife:7.0.1"
 
-    compile "com.squareup.dagger:dagger:1.2.2"
-    apt "com.squareup.dagger:dagger-compiler:1.2.2"
+    apt "com.google.dagger:dagger-compiler:2.0"
+    compile 'com.google.dagger:dagger:2.0'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
 
     compile "net.vvakame:jsonpullparser-core:1.6.2"
     apt "net.vvakame:jsonpullparser-apt:1.6.2"
@@ -101,4 +102,5 @@ dependencies {
     compile "com.squareup.okhttp:okhttp-urlconnection:2.4.0"
 
     compile "com.squareup.retrofit:retrofit:1.9.0"
+    compile 'com.mcxiaoke.volley:library:1.0.19'
 }
