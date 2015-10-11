@@ -2,4 +2,5 @@
     <string name="app_name">無能のミサワ</string>
 
     <string name="text_start">下のマイクボタンをクリックして\n話してみてください</string>
+    <string name="iminos_api_url">https://lr.capio.jp/webapis/iminos/synana_k/1_1/?acckey=3BECMZ4r8V7Sjcgm&keyname=sensibilitie&sent=</string>
 </resources>
