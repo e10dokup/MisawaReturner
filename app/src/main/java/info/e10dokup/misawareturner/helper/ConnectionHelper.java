@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import info.e10dokup.misawareturner.R;
+import info.e10dokup.misawareturner.util.MisawaUtils;
 
 /**
  * Created by e10dokup on 2015/10/11
@@ -43,7 +44,13 @@ public class ConnectionHelper {
 
     public void misawaConnection(int spn, Response.Listener listener) {
         RequestQueue queue = Volley.newRequestQueue(mContext);
-        String url = mContext.getString(R.string.kintone_api_url);
+        String url = mContext.getString(R.string.kintone_api_url) + "&query=";
+        for (int i : MisawaUtils.getMisawaCharacterIds(spn)) {
+            url += ("cid=" + String.valueOf(i));
+            url += "%20or%20";
+        }
+        url = url.substring(0, url.length()-5);
+        url += "limit%20500";
 
         JsonObjectRequest request = new JsonObjectRequest(url, null, listener, mErrorListener) {
             @Override
@@ -64,7 +71,6 @@ public class ConnectionHelper {
     private Response.ErrorListener mErrorListener = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
             Log.d(TAG, error.toString());
         }
     };

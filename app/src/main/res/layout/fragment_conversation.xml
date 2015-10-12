@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:background="#E0F7FA"
               android:id="@+id/layout_conversation"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -9,14 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btn_voice"
+        android:divider="@null"
         android:id="@+id/list_conversation"/>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:padding="6dp"
+        android:layout_height="70dp"
+        android:padding="11dp"
         android:id="@+id/btn_voice"
-        android:background="#5555FF"
+        android:background="#00ACC1"
         android:src="@drawable/ic_settings_voice_white_48dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"/>

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,7 +45,7 @@ public class MainFragment extends BaseFragment {
     ConnectionHelper mConnectionHelper;
 
     @Bind(R.id.btn_voice)
-    ImageButton mRecognitionButton;
+    ImageView mRecognitionButton;
     @Bind(R.id.layout_main)
     RelativeLayout mLayout;
 

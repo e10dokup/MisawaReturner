@@ -108,9 +108,9 @@ public class ConversationFragment extends BaseFragment {
             try {
                 String selfMessage = mAnalyzeData.getWord();
                 Random random = new Random();
-                int randomInt =  random.nextInt(100);
+                int randomInt =  random.nextInt(response.getJSONArray("records").length());
                 JSONObject record = response.getJSONArray("records").getJSONObject(randomInt);
-                mConversationList.add(new Conversation(selfMessage, record.getJSONObject("リンク").getString("value")));
+                mConversationList.add(new Conversation(selfMessage, record.getJSONObject("image").getString("value")));
                 mAdapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 e.printStackTrace();

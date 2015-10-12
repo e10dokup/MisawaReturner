@@ -9,17 +9,20 @@
         android:layout_height="wrap_content"
         android:text="text"
         android:id="@+id/text_self"
+        android:background="@drawable/baloon_self"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"/>
 
     <com.android.volley.toolbox.NetworkImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
         android:id="@+id/image_response"
+        android:background="@drawable/baloon_buddy"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_below="@+id/text_self"
         android:layout_alignParentStart="true"/>
 </RelativeLayout>
