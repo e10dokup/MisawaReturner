@@ -15,7 +15,8 @@
         android:textColor="#333"
         android:textSize="20sp"
         android:gravity="center"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="116dp"
+        android:layout_above="@+id/btn_voice"
         android:layout_centerHorizontal="true"/>
 
     <ImageView
@@ -28,13 +29,13 @@
         android:layout_centerHorizontal="true"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/misawa_face"
         android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="25dp"
         android:layout_above="@+id/text_start"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"/>
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -44,4 +45,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"/>
+
 </RelativeLayout>
