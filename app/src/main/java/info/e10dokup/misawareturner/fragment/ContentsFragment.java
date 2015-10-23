@@ -19,6 +19,8 @@ public class ContentsFragment extends BaseFragment {
     private static final String TAG = ContentsFragment.class.getSimpleName();
     private final ContentsFragment self = this;
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
