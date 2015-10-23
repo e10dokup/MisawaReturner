@@ -149,7 +149,7 @@ public class MainFragment extends BaseFragment {
                 JSONObject result = response.getJSONArray("results").getJSONObject(0);
                 int spn = result.getInt("spn");
                 ((MainActivity) getBaseActivity()).setAnalizeData(new AnalyzeData(mWord, spn));
-                getBaseActivity().replaceFragment(new ConversationFragment(), false);
+                getBaseActivity().replaceFragment(new ConversationFragment(), true);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

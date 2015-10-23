@@ -15,6 +15,7 @@ import info.e10dokup.misawareturner.core.BaseActivity;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
 import info.e10dokup.misawareturner.data.AnalyzeData;
+import info.e10dokup.misawareturner.fragment.ContentsTabFragment;
 import info.e10dokup.misawareturner.fragment.MainFragment;
 
 /**
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame, new MainFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame, new ContentsTabFragment()).commit();
     }
 
     @Override
