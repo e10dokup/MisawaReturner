@@ -1,9 +1,11 @@
 package info.e10dokup.misawareturner.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import info.e10dokup.misawareturner.R;
 import info.e10dokup.misawareturner.fragment.ContentsFragment;
 import info.e10dokup.misawareturner.fragment.ContentsTabFragment;
 import info.e10dokup.misawareturner.fragment.MainFragment;
@@ -15,8 +17,11 @@ public class ContentsFragmentPagerAdapter extends FragmentPagerAdapter {
     private static final String TAG = ContentsFragmentPagerAdapter.class.getSimpleName();
     private final ContentsFragmentPagerAdapter self = this;
 
-    public ContentsFragmentPagerAdapter(FragmentManager fm) {
+    private Context mContext;
+
+    public ContentsFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        mContext = context;
     }
 
     @Override
@@ -33,9 +38,9 @@ public class ContentsFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "トーク";
+                return mContext.getString(R.string.title_talks);
             case 1:
-                return "使い方";
+                return mContext.getString(R.string.title_misawa);
         }
         return null;
     }

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
@@ -21,14 +22,12 @@ import info.e10dokup.misawareturner.fragment.MainFragment;
 /**
  * Created by e10dokup on 2015/10/09
  **/
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final MainActivity self = this;
 
-    @Bind(R.id.view_navigation)
-    NavigationView mNavigationView;
-    @Bind(R.id.layout_drawer)
-    DrawerLayout mDrawerLayout;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
 
     private AnalyzeData sAnalyzeData;
 
@@ -44,8 +43,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         ButterKnife.bind(this);
 
-        mNavigationView.setNavigationItemSelectedListener(this);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame, new ContentsTabFragment()).commit();
     }
 
@@ -56,17 +53,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
-        return false;
-    }
-
-    @Override
     public void onBackPressed() {
         BaseFragment fragment = getCurrentFragment();
 
-        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-            mDrawerLayout.closeDrawers();
-        } else if (fragment != null && fragment.onBackPressed()) {
+        if (fragment != null && fragment.onBackPressed()) {
             // OK
         } else {
             popFragment();
@@ -112,26 +102,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.onFragmentResumed(fragment);
     }
 
-    @Override
-    public void isDrawerOpen() {
-        mDrawerLayout.isDrawerOpen(Gravity.LEFT);
-    }
-
-    @Override
-    public void openDrawer() {
-        mDrawerLayout.openDrawer(Gravity.LEFT);
-    }
-
-    @Override
-    public void closeDrawer() {
-        mDrawerLayout.closeDrawers();
-    }
-
     public void setAnalizeData(AnalyzeData analyzeData) {
         sAnalyzeData = analyzeData;
     }
 
     public AnalyzeData getAnalyzeData() {
         return sAnalyzeData;
+    }
+
+    public void setToolbarTitle(int titleId) {
+        mToolbar.setTitle(titleId);
     }
 }

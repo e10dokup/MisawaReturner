@@ -9,10 +9,12 @@ public class Contents {
 
     private int mImageId;
     private String mText;
+    private String mDescribe;
 
-    public Contents(int imageId, String text) {
+    public Contents(int imageId, String text, String describe) {
         mImageId = imageId;
         mText = text;
+        mDescribe = describe;
     }
 
     public int getImageId() {
@@ -29,5 +31,13 @@ public class Contents {
 
     public void setText(String text) {
         mText = text;
+    }
+
+    public String getDescribe() {
+        return mDescribe;
+    }
+
+    public void setDescribe(String describe) {
+        mDescribe = describe;
     }
 }

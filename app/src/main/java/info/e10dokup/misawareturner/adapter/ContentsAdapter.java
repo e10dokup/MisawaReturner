@@ -1,6 +1,8 @@
 package info.e10dokup.misawareturner.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import info.e10dokup.misawareturner.data.Contents;
  **/
 class ContentsViewHolder {
     TextView contentsText;
+    TextView describeText;
     ImageView contentsImage;
 }
 
@@ -59,8 +62,28 @@ public class ContentsAdapter extends BaseAdapter {
         ContentsViewHolder viewHolder = new ContentsViewHolder();
         if(view == null) {
             view = mLayoutInflater.inflate(R.layout.row_contents, viewGroup, false);
-
+            viewHolder.contentsImage = (ImageView)view.findViewById(R.id.img_contents);
+            viewHolder.contentsText = (TextView)view.findViewById(R.id.text_contents);
+            viewHolder.describeText = (TextView)view.findViewById(R.id.text_describe);
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ContentsViewHolder) view.getTag();
         }
+
+        viewHolder.contentsImage.setImageDrawable(getDrawableResource(mContentsList.get(i).getImageId()));
+        viewHolder.contentsText.setText(mContentsList.get(i).getText());
+        viewHolder.describeText.setText(mContentsList.get(i).getDescribe());
+
         return view;
+    }
+
+    @SuppressWarnings("deprecation")
+    public Drawable getDrawableResource(int id){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            return mContext.getDrawable(id);
+        }
+        else{
+            return mContext.getResources().getDrawable(id);
+        }
     }
 }

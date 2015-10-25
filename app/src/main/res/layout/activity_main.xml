@@ -1,26 +1,21 @@
-<android.support.v4.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout_drawer"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <!-- The main content view -->
-        <FrameLayout
-            android:id="@+id/fragment_frame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </android.support.design.widget.CoordinatorLayout>
+        android:layout_height="wrap_content"
+        android:background="@color/header_bg"
+        android:titleTextColor="@color/header_text"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"/>
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:id="@+id/view_navigation"
-        app:menu="@menu/menu_navigation"/>
-</android.support.v4.widget.DrawerLayout>
+    <FrameLayout
+        android:id="@+id/fragment_frame"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

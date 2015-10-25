@@ -71,26 +71,13 @@ public class MainFragment extends BaseFragment {
         return view;
     }
 
-    View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-
-            intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,
-                    getBaseActivity().getPackageName());
-            mSpeechRecognizer.startListening(intent);
-        }
-    };
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
 
-    RecognitionListener mRecognitionListener = new RecognitionListener() {
+    private RecognitionListener mRecognitionListener = new RecognitionListener() {
         @Override
         public void onReadyForSpeech(Bundle params) {
             Snackbar.make(mLayout, "認識準備ができました", Snackbar.LENGTH_SHORT).show();
@@ -142,7 +129,20 @@ public class MainFragment extends BaseFragment {
         }
     };
 
-    Response.Listener<JSONObject> mSuccessListener = new Response.Listener<JSONObject>() {
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+            intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,
+                    getBaseActivity().getPackageName());
+            mSpeechRecognizer.startListening(intent);
+        }
+    };
+
+    private Response.Listener<JSONObject> mSuccessListener = new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
             try {
@@ -155,10 +155,5 @@ public class MainFragment extends BaseFragment {
             }
         }
     };
-
-
-
-
-
 
 }

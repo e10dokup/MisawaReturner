@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import info.e10dokup.misawareturner.MainActivity;
 import info.e10dokup.misawareturner.R;
 import info.e10dokup.misawareturner.adapter.ContentsFragmentPagerAdapter;
 import info.e10dokup.misawareturner.core.BaseFragment;
@@ -33,9 +34,10 @@ public class ContentsTabFragment extends BaseFragment {
 
         ButterKnife.bind(this, view);
 
-        ContentsFragmentPagerAdapter adapter = new ContentsFragmentPagerAdapter(getBaseActivity().getSupportFragmentManager());
+        ContentsFragmentPagerAdapter adapter = new ContentsFragmentPagerAdapter(getBaseActivity().getSupportFragmentManager(), getBaseActivity());
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(mOnPageChangeListener);
 
         return view;
     }
@@ -49,4 +51,28 @@ public class ContentsTabFragment extends BaseFragment {
         }
         return null;
     }
+
+    private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            switch (position) {
+                case 0:
+                    ((MainActivity) getBaseActivity()).setToolbarTitle(R.string.title_contents);
+                    break;
+                case 1:
+                    ((MainActivity) getBaseActivity()).setToolbarTitle(R.string.title_munou);
+                    break;
+            }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 }

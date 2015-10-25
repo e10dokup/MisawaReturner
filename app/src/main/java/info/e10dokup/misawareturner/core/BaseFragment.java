@@ -29,18 +29,6 @@ public abstract class BaseFragment extends Fragment {
         getBaseActivity().popFragment();
     }
 
-    public void isDrawerOpen() {
-        getBaseActivity().isDrawerOpen();
-    }
-
-    public void openDrawer() {
-        getBaseActivity().openDrawer();
-    }
-
-    public void closeDrawer() {
-        getBaseActivity().closeDrawer();
-    }
-
     public boolean requireAuth() {
         return true;
     }

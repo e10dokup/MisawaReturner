@@ -5,4 +5,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Toolbar Title Color-->
+        <item name="android:textColorPrimary">@color/header_text</item>
+        <!-- Toolbar menu overflow icon color -->
+        <item name="android:textColorSecondary">@color/header_text_unselected</item>
+    </style>
+
 </resources>

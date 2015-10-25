@@ -89,7 +89,7 @@ public class ConversationFragment extends BaseFragment {
         return view;
     }
 
-    View.OnClickListener mOnClickListener = new View.OnClickListener() {
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -102,7 +102,7 @@ public class ConversationFragment extends BaseFragment {
         }
     };
 
-    Response.Listener<JSONObject> mMisawaSuccessListener = new Response.Listener<JSONObject>() {
+    private Response.Listener<JSONObject> mMisawaSuccessListener = new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
             try {
@@ -118,7 +118,7 @@ public class ConversationFragment extends BaseFragment {
         }
     };
 
-    Response.Listener<JSONObject> mAnalizeSuccessListener = new Response.Listener<JSONObject>() {
+    private Response.Listener<JSONObject> mAnalizeSuccessListener = new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
             try {
@@ -132,7 +132,7 @@ public class ConversationFragment extends BaseFragment {
         }
     };
 
-    RecognitionListener mRecognitionListener = new RecognitionListener() {
+    private RecognitionListener mRecognitionListener = new RecognitionListener() {
         @Override
         public void onReadyForSpeech(Bundle params) {
             Snackbar.make(mLayout, "認識準備ができました", Snackbar.LENGTH_SHORT).show();

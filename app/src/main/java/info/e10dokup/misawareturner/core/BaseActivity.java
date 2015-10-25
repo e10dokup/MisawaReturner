@@ -19,10 +19,4 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void onFragmentResumed(BaseFragment fragment) {
     }
-
-    public abstract void isDrawerOpen();
-
-    public abstract void openDrawer();
-
-    public abstract void closeDrawer();
 }

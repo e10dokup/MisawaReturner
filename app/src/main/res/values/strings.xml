@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">無能プラットフォーム</string>
+    <string name="title_contents">無能プラットフォーム</string>
+    <string name="title_munou">無能のミサワ</string>
+
+    <string name="title_talks">トーク</string>
+    <string name="title_misawa">？？？</string>
 
     <string name="text_start">適当に話しかけると\n適当に惚れさせに来るぞ！\nまずは適当に話しかけてみよう！</string>
     <string name="iminos_api_url">https://lr.capio.jp/iminos/webapis/synana_k/1_1/?acckey=3BECMZ4r8V7Sjcgm&amp;keyname=sensibilitie&amp;sent=</string>
@@ -10,5 +15,9 @@
     <string-array name="contents">
         <item>音楽</item>
         <item>動画</item>
+    </string-array>
+    <string-array name="describes">
+        <item>感情に応じた曲に癒やされたい</item>
+        <item>感情に応じた動画に癒やされたい</item>
     </string-array>
 </resources>
