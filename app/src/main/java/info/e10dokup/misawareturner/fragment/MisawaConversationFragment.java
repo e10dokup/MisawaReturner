@@ -34,7 +34,7 @@ import info.e10dokup.misawareturner.adapter.MisawaConversationAdapter;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
 import info.e10dokup.misawareturner.data.AnalyzeData;
-import info.e10dokup.misawareturner.data.Conversation;
+import info.e10dokup.misawareturner.data.ImageConversation;
 import info.e10dokup.misawareturner.helper.ConnectionHelper;
 
 /**
@@ -54,7 +54,7 @@ public class MisawaConversationFragment extends BaseFragment {
     @Bind(R.id.layout_conversation)
     RelativeLayout mLayout;
 
-    private List<Conversation> mConversationList = new ArrayList<>();
+    private List<ImageConversation> mConversationList = new ArrayList<>();
     private MisawaConversationAdapter mAdapter;
     private AnalyzeData mAnalyzeData;
     private SpeechRecognizer mSpeechRecognizer;
@@ -109,7 +109,7 @@ public class MisawaConversationFragment extends BaseFragment {
                 Random random = new Random();
                 int randomInt =  random.nextInt(response.getJSONArray("records").length());
                 JSONObject record = response.getJSONArray("records").getJSONObject(randomInt);
-                mConversationList.add(new Conversation(selfMessage, record.getJSONObject("image").getString("value")));
+                mConversationList.add(new ImageConversation(selfMessage, record.getJSONObject("image").getString("value")));
                 mAdapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 e.printStackTrace();

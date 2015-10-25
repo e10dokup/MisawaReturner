@@ -16,7 +16,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.List;
 
 import info.e10dokup.misawareturner.R;
-import info.e10dokup.misawareturner.data.Conversation;
+import info.e10dokup.misawareturner.data.ImageConversation;
 
 /**
  * Created by e10dokup on 2015/10/11
@@ -30,11 +30,11 @@ public class MisawaConversationAdapter extends BaseAdapter {
     private static final String TAG = MisawaConversationAdapter.class.getSimpleName();
     private final MisawaConversationAdapter self = this;
 
-    Context mContext;
-    LayoutInflater mLayoutInflater = null;
-    List<Conversation> mConversationList;
-    RequestQueue mRequestQueue;
-    ImageLoader.ImageCache mImageCache = new ImageLoader.ImageCache() {
+    private Context mContext;
+    private LayoutInflater mLayoutInflater = null;
+    private List<ImageConversation> mConversationList;
+    private RequestQueue mRequestQueue;
+    private ImageLoader.ImageCache mImageCache = new ImageLoader.ImageCache() {
         @Override
         public Bitmap getBitmap(String url) {
             return null;
@@ -46,14 +46,14 @@ public class MisawaConversationAdapter extends BaseAdapter {
         }
     };
 
-    public MisawaConversationAdapter(Context context, List<Conversation> conversationList) {
+    public MisawaConversationAdapter(Context context, List<ImageConversation> conversationList) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mConversationList = conversationList;
         mRequestQueue = Volley.newRequestQueue(context);
     }
 
-    public void setConversationList(List<Conversation> conversationList) {
+    public void setConversationList(List<ImageConversation> conversationList) {
         mConversationList = conversationList;
     }
 
