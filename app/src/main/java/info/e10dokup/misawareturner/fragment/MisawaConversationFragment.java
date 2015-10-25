@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -31,7 +30,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import info.e10dokup.misawareturner.MainActivity;
 import info.e10dokup.misawareturner.R;
-import info.e10dokup.misawareturner.adapter.ConversationAdapter;
+import info.e10dokup.misawareturner.adapter.MisawaConversationAdapter;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
 import info.e10dokup.misawareturner.data.AnalyzeData;
@@ -41,9 +40,9 @@ import info.e10dokup.misawareturner.helper.ConnectionHelper;
 /**
  * Created by e10dokup on 2015/10/11
  **/
-public class ConversationFragment extends BaseFragment {
-    private static final String TAG = ConversationFragment.class.getSimpleName();
-    private final ConversationFragment self = this;
+public class MisawaConversationFragment extends BaseFragment {
+    private static final String TAG = MisawaConversationFragment.class.getSimpleName();
+    private final MisawaConversationFragment self = this;
 
     @Inject
     ConnectionHelper mConnectionHelper;
@@ -56,7 +55,7 @@ public class ConversationFragment extends BaseFragment {
     RelativeLayout mLayout;
 
     private List<Conversation> mConversationList = new ArrayList<>();
-    private ConversationAdapter mAdapter;
+    private MisawaConversationAdapter mAdapter;
     private AnalyzeData mAnalyzeData;
     private SpeechRecognizer mSpeechRecognizer;
     private String mWord;
@@ -81,7 +80,7 @@ public class ConversationFragment extends BaseFragment {
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(getBaseActivity());
         mSpeechRecognizer.setRecognitionListener(mRecognitionListener);
 
-        mAdapter = new ConversationAdapter(getBaseActivity(), mConversationList);
+        mAdapter = new MisawaConversationAdapter(getBaseActivity(), mConversationList);
         mListView.setAdapter(mAdapter);
         mRecognitionButton.setOnClickListener(mOnClickListener);
 

@@ -1,10 +1,8 @@
 package info.e10dokup.misawareturner.core;
 
-import com.android.volley.RequestQueue;
-
 import dagger.Component;
 import info.e10dokup.misawareturner.MainActivity;
-import info.e10dokup.misawareturner.fragment.ConversationFragment;
+import info.e10dokup.misawareturner.fragment.MisawaConversationFragment;
 import info.e10dokup.misawareturner.fragment.MainFragment;
 
 @Component(
@@ -15,5 +13,5 @@ public interface AppComponent {
 
     void inject(MainFragment mainFragment);
 
-    void inject(ConversationFragment conversationFragment);
+    void inject(MisawaConversationFragment conversationFragment);
 }

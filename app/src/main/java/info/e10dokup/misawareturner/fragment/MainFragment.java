@@ -11,13 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.android.volley.RequestQueue;
+
 import com.android.volley.Response;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -149,7 +147,7 @@ public class MainFragment extends BaseFragment {
                 JSONObject result = response.getJSONArray("results").getJSONObject(0);
                 int spn = result.getInt("spn");
                 ((MainActivity) getBaseActivity()).setAnalizeData(new AnalyzeData(mWord, spn));
-                getBaseActivity().replaceFragment(new ConversationFragment(), true);
+                getBaseActivity().replaceFragment(new MisawaConversationFragment(), true);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

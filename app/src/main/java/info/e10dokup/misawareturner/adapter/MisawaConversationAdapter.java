@@ -21,14 +21,14 @@ import info.e10dokup.misawareturner.data.Conversation;
 /**
  * Created by e10dokup on 2015/10/11
  **/
-class ConversationViewHolder {
+class MisawaConversationViewHolder {
     TextView selfMessageText;
     NetworkImageView responseImage;
 }
 
-public class ConversationAdapter extends BaseAdapter {
-    private static final String TAG = ConversationAdapter.class.getSimpleName();
-    private final ConversationAdapter self = this;
+public class MisawaConversationAdapter extends BaseAdapter {
+    private static final String TAG = MisawaConversationAdapter.class.getSimpleName();
+    private final MisawaConversationAdapter self = this;
 
     Context mContext;
     LayoutInflater mLayoutInflater = null;
@@ -46,7 +46,7 @@ public class ConversationAdapter extends BaseAdapter {
         }
     };
 
-    public ConversationAdapter(Context context, List<Conversation> conversationList) {
+    public MisawaConversationAdapter(Context context, List<Conversation> conversationList) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mConversationList = conversationList;
@@ -74,14 +74,14 @@ public class ConversationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ConversationViewHolder viewHolder = new ConversationViewHolder();
+        MisawaConversationViewHolder viewHolder = new MisawaConversationViewHolder();
         if(view == null) {
-            view = mLayoutInflater.inflate(R.layout.row_conversation, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.row_misawa_conversation, viewGroup, false);
             viewHolder.selfMessageText = (TextView)view.findViewById(R.id.text_self);
             viewHolder.responseImage = (NetworkImageView)view.findViewById(R.id.image_response);
             view.setTag(viewHolder);
         } else {
-            viewHolder = (ConversationViewHolder) view.getTag();
+            viewHolder = (MisawaConversationViewHolder) view.getTag();
         }
 
         ImageLoader imageLoader = new ImageLoader(mRequestQueue, mImageCache);
