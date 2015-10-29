@@ -60,12 +60,28 @@ public class ContentsFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     private AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+            getBaseActivity().replaceFragment(getNewFragment(i), true);
         }
     };
+
+    private BaseFragment getNewFragment(int index) {
+        switch (index) {
+            case 0:
+                return new MusicConversationFragment();
+            case 1:
+                return new MusicConversationFragment();
+        }
+        return null;
+    }
 
 
 }

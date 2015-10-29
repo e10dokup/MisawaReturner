@@ -72,6 +72,7 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mSpeechRecognizer.destroy();
         ButterKnife.unbind(this);
     }
 

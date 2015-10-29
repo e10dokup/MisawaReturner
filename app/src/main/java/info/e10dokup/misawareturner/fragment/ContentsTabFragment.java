@@ -42,6 +42,12 @@ public class ContentsTabFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     public static BaseFragment getInstance(int position) {
         switch (position) {
             case 0:
@@ -55,6 +61,11 @@ public class ContentsTabFragment extends BaseFragment {
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
             switch (position) {
                 case 0:
                     ((MainActivity) getBaseActivity()).setToolbarTitle(R.string.title_contents);
@@ -63,11 +74,6 @@ public class ContentsTabFragment extends BaseFragment {
                     ((MainActivity) getBaseActivity()).setToolbarTitle(R.string.title_munou);
                     break;
             }
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-
         }
 
         @Override

@@ -1,0 +1,94 @@
+TASK info.e10dokup.misawareturner.develop.debug id=20828
+  ACTIVITY info.e10dokup.misawareturner.develop.debug/info.e10dokup.misawareturner.MainActivity 2cc51774 pid=30011
+    Local FragmentActivity 1833ccc State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+    Active Fragments in 174be742:
+      #0: ContentsTabFragment{2ad3c353 #0 id=0x7f0d0066}
+        mFragmentId=#7f0d0066 mContainerId=#7f0d0066 mTag=null
+        mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{174be742 in HostCallbacks{26dfa490}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+        mContainer=android.widget.FrameLayout{8bd2189 V.E..... ........ 0,224-1440,2292 #7f0d0066 app:id/fragment_frame}
+        mView=android.widget.LinearLayout{11b5358e V.E..... ........ 0,0-1440,2068}
+        mInnerView=android.widget.LinearLayout{11b5358e V.E..... ........ 0,0-1440,2068}
+        Child FragmentManager{3a4d41af in ContentsTabFragment{2ad3c353}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+            mContainer=android.support.v4.app.Fragment$1@194279bc
+            mParent=ContentsTabFragment{2ad3c353 #0 id=0x7f0d0066}
+            mCurState=5 mStateSaved=false mDestroyed=false
+      #1: ContentsFragment{25cd4d45 #1 id=0x7f0d0072 android:switcher:2131558514:0}
+        mFragmentId=#7f0d0072 mContainerId=#7f0d0072 mTag=android:switcher:2131558514:0
+        mState=5 mIndex=1 mWho=android:fragment:1 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=false
+        mFragmentManager=FragmentManager{174be742 in HostCallbacks{26dfa490}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+        mContainer=android.support.v4.view.ViewPager{2e531c9a VFED.... ......ID 0,192-1440,2068 #7f0d0072 app:id/contents_view_pager}
+        mView=android.widget.RelativeLayout{53649cb V.E..... ......ID 0,0-1440,1876}
+        mInnerView=android.widget.RelativeLayout{53649cb V.E..... ......ID 0,0-1440,1876}
+        Child FragmentManager{209b75a8 in ContentsFragment{25cd4d45}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+            mContainer=android.support.v4.app.Fragment$1@27fa78c1
+            mParent=ContentsFragment{25cd4d45 #1 id=0x7f0d0072 android:switcher:2131558514:0}
+            mCurState=5 mStateSaved=false mDestroyed=false
+      #2: MainFragment{3cb66866 #2 id=0x7f0d0072 android:switcher:2131558514:1}
+        mFragmentId=#7f0d0072 mContainerId=#7f0d0072 mTag=android:switcher:2131558514:1
+        mState=5 mIndex=2 mWho=android:fragment:2 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{174be742 in HostCallbacks{26dfa490}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+        mContainer=android.support.v4.view.ViewPager{2e531c9a VFED.... ......ID 0,192-1440,2068 #7f0d0072 app:id/contents_view_pager}
+        mView=android.widget.RelativeLayout{125db7a7 V.E..... .......D 1440,0-2880,1876 #7f0d006d app:id/layout_main}
+        mInnerView=android.widget.RelativeLayout{125db7a7 V.E..... .......D 1440,0-2880,1876 #7f0d006d app:id/layout_main}
+        Child FragmentManager{12064454 in MainFragment{3cb66866}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+            mContainer=android.support.v4.app.Fragment$1@274dffd
+            mParent=MainFragment{3cb66866 #2 id=0x7f0d0072 android:switcher:2131558514:1}
+            mCurState=5 mStateSaved=false mDestroyed=false
+      #3: null
+    Added Fragments:
+      #0: ContentsFragment{25cd4d45 #1 id=0x7f0d0072 android:switcher:2131558514:0}
+      #1: MainFragment{3cb66866 #2 id=0x7f0d0072 android:switcher:2131558514:1}
+      #2: ContentsTabFragment{2ad3c353 #0 id=0x7f0d0066}
+    Back Stack Indices:
+      #0: null
+    mAvailBackStackIndices: [0]
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@26dfa490
+      mCurState=5 mStateSaved=false mDestroyed=false
+      mAvailIndices: [3]
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{ef19951 V.E..... ... 0,0-1440,2560}
+        android.widget.LinearLayout{22b0a4f2 V.E..... ... 0,0-1440,2392}
+          android.view.ViewStub{1ca42743 G.E..... ... 0,0-0,0 #1020378}
+          android.widget.FrameLayout{16ad51c0 V.E..... ... 0,100-1440,2392}
+            android.support.v7.internal.widget.FitWindowsLinearLayout{31347ef9 V.E..... ... 0,0-1440,2292 #7f0d0051 app:id/action_bar_root}
+              android.support.v7.internal.widget.ViewStubCompat{1fa01e3e G.E..... ... 0,0-0,0 #7f0d0052 app:id/action_mode_bar_stub}
+              android.support.v7.internal.widget.ContentFrameLayout{2257f49f V.E..... ... 0,0-1440,2292 #1020002 android:id/content}
+                android.widget.RelativeLayout{3df5c9ec V.E..... ... 0,0-1440,2292}
+                  android.support.v7.widget.Toolbar{a6d4021 V.E..... ... 0,0-1440,224 #7f0d0065 app:id/toolbar}
+                    android.widget.TextView{1565798d V.ED.... ... 64,58-544,165}
+                  android.widget.FrameLayout{8bd2189 V.E..... ... 0,224-1440,2292 #7f0d0066 app:id/fragment_frame}
+                    android.widget.LinearLayout{11b5358e V.E..... ... 0,0-1440,2068}
+                      android.support.design.widget.TabLayout{1db511b5 VFED.... ... 0,0-1440,192 #7f0d0071 app:id/layout_tab}
+                        android.support.design.widget.TabLayout$SlidingTabStrip{387be04a V.ED.... ... 0,0-1440,192}
+                          android.support.design.widget.TabLayout$TabView{e513bbb VFE...C. ... 0,0-720,192}
+                            android.widget.ImageView{66b98d8 G.ED.... ... 0,0-0,0}
+                            android.support.v7.widget.AppCompatTextView{13721431 V.ED.... ... 276,58-444,134}
+                          android.support.design.widget.TabLayout$TabView{189fb716 VFE...C. .S. 720,0-1440,192}
+                            android.widget.ImageView{16cdd897 G.ED.... .S. 0,0-0,0}
+                            android.support.v7.widget.AppCompatTextView{96d6a84 V.ED.... .S. 276,58-444,134}
+                      android.support.v4.view.ViewPager{22c26d VFED.... ... 0,192-1440,2068 #7f0d0072 app:id/contents_view_pager}
+        android.view.View{33582ea2 V.ED.... ... 0,0-1440,100 #102002f android:id/statusBarBackground}
+        android.view.View{2e0d6733 V.ED.... ... 0,2392-1440,2560 #1020030 android:id/navigationBarBackground}

@@ -12,6 +12,9 @@
     <string name="kintone_api_url">https://t9xw8.cybozu.com/k/v1/records.json?app=14</string>
     <string name="kintone_api_key">tCSEWuf0oju2oq9T6GxXwWIKFLan3Q4PGii35uWZ</string>
 
+    <string name="gn_api_url">https://c1125183320.web.cddbp.net/webapi/json/1.0/</string>
+    <string name="gn_app_key">1125183320-C4A3ADF142A70C232D4FEF91A5A1880B</string>
+
     <string-array name="contents">
         <item>音楽</item>
         <item>動画</item>

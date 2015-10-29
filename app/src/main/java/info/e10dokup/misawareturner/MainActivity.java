@@ -42,6 +42,7 @@ public class MainActivity extends BaseActivity {
         }
 
         ButterKnife.bind(this);
+        mToolbar.setTitle(getString(R.string.title_talks));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame, new ContentsTabFragment()).commit();
     }

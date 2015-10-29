@@ -42,6 +42,15 @@ public class ConnectionHelper {
         queue.start();
     }
 
+    public void gnRegisterConnection(Response.Listener listener) {
+        RequestQueue queue = Volley.newRequestQueue(mContext);
+        String url = mContext.getString(R.string.gn_api_url) + "register?client=" + mContext.getString(R.string.gn_app_key);
+        JsonObjectRequest request = new JsonObjectRequest(url, null, listener, mErrorListener);
+        queue.add(request);
+
+        queue.start();
+    }
+
     public void misawaConnection(int spn, Response.Listener listener) {
         RequestQueue queue = Volley.newRequestQueue(mContext);
         String url = mContext.getString(R.string.kintone_api_url) + "&query=";
@@ -72,6 +81,7 @@ public class ConnectionHelper {
         @Override
         public void onErrorResponse(VolleyError error) {
             Log.d(TAG, error.toString());
+            Toast.makeText(mContext, "Failed connection!", Toast.LENGTH_SHORT).show();
         }
     };
 }

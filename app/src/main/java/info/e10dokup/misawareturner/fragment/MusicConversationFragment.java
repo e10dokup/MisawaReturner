@@ -28,21 +28,23 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import info.e10dokup.misawareturner.MainActivity;
 import info.e10dokup.misawareturner.R;
 import info.e10dokup.misawareturner.adapter.MisawaConversationAdapter;
+import info.e10dokup.misawareturner.adapter.TextConversationAdapter;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
 import info.e10dokup.misawareturner.data.AnalyzeData;
 import info.e10dokup.misawareturner.data.ImageConversation;
+import info.e10dokup.misawareturner.data.TextConversation;
 import info.e10dokup.misawareturner.helper.ConnectionHelper;
+import info.e10dokup.misawareturner.preference.GnClientPreferences;
 
 /**
- * Created by e10dokup on 2015/10/11
+ * Created by e10dokup on 2015/10/25
  **/
-public class MisawaConversationFragment extends BaseFragment {
-    private static final String TAG = MisawaConversationFragment.class.getSimpleName();
-    private final MisawaConversationFragment self = this;
+public class MusicConversationFragment extends BaseFragment {
+    private static final String TAG = MusicConversationFragment.class.getSimpleName();
+    private final MusicConversationFragment self = this;
 
     @Inject
     ConnectionHelper mConnectionHelper;
@@ -54,17 +56,13 @@ public class MisawaConversationFragment extends BaseFragment {
     @Bind(R.id.layout_conversation)
     RelativeLayout mLayout;
 
-    private List<ImageConversation> mConversationList = new ArrayList<>();
-    private MisawaConversationAdapter mAdapter;
+    private List<TextConversation> mConversationList = new ArrayList<>();
+    private TextConversationAdapter mAdapter;
     private AnalyzeData mAnalyzeData;
     private SpeechRecognizer mSpeechRecognizer;
     private String mWord;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mAnalyzeData = ((MainActivity)getBaseActivity()).getAnalyzeData();
-    }
+    private GnClientPreferences mGnClientPreferences;
+    private String mGnKey;
 
     @Nullable
     @Override
@@ -80,11 +78,18 @@ public class MisawaConversationFragment extends BaseFragment {
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(getBaseActivity());
         mSpeechRecognizer.setRecognitionListener(mRecognitionListener);
 
-        mAdapter = new MisawaConversationAdapter(getBaseActivity(), mConversationList);
+        mAdapter = new TextConversationAdapter(getBaseActivity(), mConversationList);
         mListView.setAdapter(mAdapter);
         mRecognitionButton.setOnClickListener(mOnClickListener);
 
-        mConnectionHelper.misawaConnection(mAnalyzeData.getSpn(), mMisawaSuccessListener);
+        mGnClientPreferences = new GnClientPreferences(getBaseActivity());
+
+        if (mGnClientPreferences.isFirst()) {
+            mConnectionHelper.gnRegisterConnection(mGnRegisterRListener);
+        } else {
+            mGnKey = mGnClientPreferences.getClient();
+        }
+
         return view;
     }
 
@@ -111,16 +116,26 @@ public class MisawaConversationFragment extends BaseFragment {
     private Response.Listener<JSONObject> mMisawaSuccessListener = new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
-            try {
-                String selfMessage = mAnalyzeData.getWord();
-                Random random = new Random();
-                int randomInt =  random.nextInt(response.getJSONArray("records").length());
-                JSONObject record = response.getJSONArray("records").getJSONObject(randomInt);
-                mConversationList.add(new ImageConversation(selfMessage, record.getJSONObject("image").getString("value")));
-                mAdapter.notifyDataSetChanged();
-            } catch (JSONException e) {
+//            try {
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+        }
+    };
+
+    private Response.Listener<JSONObject> mGnRegisterRListener = new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+            try{
+                JSONObject res = response.getJSONArray("RESPONSE").getJSONObject(0);
+                JSONObject user = res.getJSONArray("USER").getJSONObject(0);
+                mGnKey = user.getString("VALUE");
+                mGnClientPreferences.setInfo(false, mGnKey);
+                Snackbar.make(mLayout, "Gracenote APIとの連携が完了しました", Snackbar.LENGTH_SHORT).show();
+            }catch(JSONException e){
                 e.printStackTrace();
             }
+
         }
     };
 
@@ -189,8 +204,6 @@ public class MisawaConversationFragment extends BaseFragment {
         public void onEvent(int eventType, Bundle params) {
         }
     };
-
-
 
 
 }
