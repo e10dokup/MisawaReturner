@@ -12,6 +12,7 @@
         android:background="@drawable/baloon_self"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"/>
 
@@ -22,6 +23,7 @@
         android:text="response"
         android:background="@drawable/baloon_buddy"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="5dp"
         android:layout_below="@+id/text_self"

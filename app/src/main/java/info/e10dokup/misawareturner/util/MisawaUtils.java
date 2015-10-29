@@ -27,4 +27,15 @@ public class MisawaUtils {
             default: return null;
         }
     }
+
+    public static String getMood(int spn) {
+        switch(spn) {
+            case NO_VALUE: return "65531";
+            case POSITIVE: return "65332";
+            case NEGATIVE: return "42949";
+            case EXPECT: return "42953";
+            case REQUEST: return "65329";
+            default: return null;
+        }
+    }
 }

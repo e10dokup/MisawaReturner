@@ -11,12 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.android.volley.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,6 +30,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import info.e10dokup.misawareturner.MainActivity;
 import info.e10dokup.misawareturner.R;
 import info.e10dokup.misawareturner.adapter.MisawaConversationAdapter;
 import info.e10dokup.misawareturner.adapter.TextConversationAdapter;
@@ -35,6 +38,7 @@ import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
 import info.e10dokup.misawareturner.data.AnalyzeData;
 import info.e10dokup.misawareturner.data.ImageConversation;
+import info.e10dokup.misawareturner.data.Music;
 import info.e10dokup.misawareturner.data.TextConversation;
 import info.e10dokup.misawareturner.helper.ConnectionHelper;
 import info.e10dokup.misawareturner.preference.GnClientPreferences;
@@ -63,6 +67,7 @@ public class MusicConversationFragment extends BaseFragment {
     private String mWord;
     private GnClientPreferences mGnClientPreferences;
     private String mGnKey;
+    private List<List<Music>> mMusicsList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -85,10 +90,19 @@ public class MusicConversationFragment extends BaseFragment {
         mGnClientPreferences = new GnClientPreferences(getBaseActivity());
 
         if (mGnClientPreferences.isFirst()) {
-            mConnectionHelper.gnRegisterConnection(mGnRegisterRListener);
+            mConnectionHelper.gnRegisterConnection(mGnRegisterListener);
         } else {
             mGnKey = mGnClientPreferences.getClient();
         }
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                List<Music> musics = mMusicsList.get(i);
+                ((MainActivity) getBaseActivity()).setMusics(musics);
+                replaceFragment(new RecommendFragment(), true);
+            }
+        });
 
         return view;
     }
@@ -113,17 +127,18 @@ public class MusicConversationFragment extends BaseFragment {
         }
     };
 
-    private Response.Listener<JSONObject> mMisawaSuccessListener = new Response.Listener<JSONObject>() {
-        @Override
-        public void onResponse(JSONObject response) {
-//            try {
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
+    private void setResponse(List<Music> musics) {
+        String response = "今のあなたには\n";
+        for(Music m : musics) {
+            response += "\n" + m.getArtist() + " の " + m.getTitle() + "\n";
         }
-    };
+        response += "\nがおすすめです";
+        TextConversation conversation = new TextConversation(mAnalyzeData.getWord(), response);
+        mConversationList.add(conversation);
+        mAdapter.notifyDataSetChanged();
+    }
 
-    private Response.Listener<JSONObject> mGnRegisterRListener = new Response.Listener<JSONObject>() {
+    private Response.Listener<JSONObject> mGnRegisterListener = new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
             try{
@@ -135,7 +150,34 @@ public class MusicConversationFragment extends BaseFragment {
             }catch(JSONException e){
                 e.printStackTrace();
             }
+        }
+    };
 
+    private Response.Listener<JSONObject> mGnRadioSuccessListener = new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+            try {
+                JSONObject res = response.getJSONArray("RESPONSE").getJSONObject(0);
+                JSONArray albums = res.getJSONArray("ALBUM");
+                List<Music> musics = new ArrayList<>();
+                for(int i=0; i < albums.length(); i++) {
+                    JSONObject album = albums.getJSONObject(i);
+                    String coverUrl;
+                    try {
+                        coverUrl = album.getJSONArray("URL").getJSONObject(0).getString("VALUE");
+                    } catch(JSONException e) {
+                        coverUrl = null;
+                    }
+                    String artist = album.getJSONArray("ARTIST").getJSONObject(0).getString("VALUE");
+                    String title = album.getJSONArray("TRACK").getJSONObject(0)
+                            .getJSONArray("TITLE").getJSONObject(0).getString("VALUE");
+                    musics.add(new Music(artist, title, coverUrl));
+                }
+                setResponse(musics);
+                mMusicsList.add(musics);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     };
 
@@ -146,7 +188,7 @@ public class MusicConversationFragment extends BaseFragment {
                 JSONObject result = response.getJSONArray("results").getJSONObject(0);
                 int spn = result.getInt("spn");
                 mAnalyzeData = new AnalyzeData(mWord, spn);
-                mConnectionHelper.misawaConnection(spn, mMisawaSuccessListener);
+                mConnectionHelper.gnRadioConnection(spn, mGnKey, mGnRadioSuccessListener);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

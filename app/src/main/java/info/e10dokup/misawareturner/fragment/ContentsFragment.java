@@ -69,7 +69,10 @@ public class ContentsFragment extends BaseFragment {
     private AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            getBaseActivity().replaceFragment(getNewFragment(i), true);
+            BaseFragment target = getNewFragment(i);
+            if(target != null) {
+                getBaseActivity().replaceFragment(getNewFragment(i), true);
+            }
         }
     };
 
@@ -78,7 +81,7 @@ public class ContentsFragment extends BaseFragment {
             case 0:
                 return new MusicConversationFragment();
             case 1:
-                return new MusicConversationFragment();
+                return null;
         }
         return null;
     }

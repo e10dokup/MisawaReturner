@@ -47,7 +47,19 @@ public class ConnectionHelper {
         String url = mContext.getString(R.string.gn_api_url) + "register?client=" + mContext.getString(R.string.gn_app_key);
         JsonObjectRequest request = new JsonObjectRequest(url, null, listener, mErrorListener);
         queue.add(request);
+        queue.start();
+    }
 
+    public void gnRadioConnection(int spn, String key, Response.Listener listener) {
+        RequestQueue queue = Volley.newRequestQueue(mContext);
+        String url = mContext.getString(R.string.gn_api_url)
+                + "radio/create?"
+                + "genre=35616&era=29483&select_extended=cover&mood=" + MisawaUtils.getMood(spn)
+                + "&lang=jpn&country=jpn&client=1125183320-C4A3ADF142A70C232D4FEF91A5A1880B&user="
+                + key;
+
+        JsonObjectRequest request = new JsonObjectRequest(url, null, listener, mErrorListener);
+        queue.add(request);
         queue.start();
     }
 

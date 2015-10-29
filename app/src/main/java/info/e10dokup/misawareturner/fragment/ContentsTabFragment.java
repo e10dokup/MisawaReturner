@@ -34,7 +34,7 @@ public class ContentsTabFragment extends BaseFragment {
 
         ButterKnife.bind(this, view);
 
-        ContentsFragmentPagerAdapter adapter = new ContentsFragmentPagerAdapter(getBaseActivity().getSupportFragmentManager(), getBaseActivity());
+        ContentsFragmentPagerAdapter adapter = new ContentsFragmentPagerAdapter(getChildFragmentManager(), getBaseActivity());
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(mOnPageChangeListener);

@@ -10,12 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import info.e10dokup.misawareturner.core.BaseActivity;
 import info.e10dokup.misawareturner.core.BaseFragment;
 import info.e10dokup.misawareturner.core.MyApplication;
 import info.e10dokup.misawareturner.data.AnalyzeData;
+import info.e10dokup.misawareturner.data.Music;
 import info.e10dokup.misawareturner.fragment.ContentsTabFragment;
 import info.e10dokup.misawareturner.fragment.MainFragment;
 
@@ -30,6 +33,7 @@ public class MainActivity extends BaseActivity {
     Toolbar mToolbar;
 
     private AnalyzeData sAnalyzeData;
+    private List<Music> sMusics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +113,14 @@ public class MainActivity extends BaseActivity {
 
     public AnalyzeData getAnalyzeData() {
         return sAnalyzeData;
+    }
+
+    public List<Music> getMusics() {
+        return sMusics;
+    }
+
+    public void setMusics(List<Music> musics) {
+        sMusics = musics;
     }
 
     public void setToolbarTitle(int titleId) {
